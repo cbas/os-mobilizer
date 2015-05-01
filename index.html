@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mobilizer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A distribution/testing platform for mobile applications">
+    <link href="static/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="static/app.css" rel="stylesheet">
+    <link href="static/app-theme.css" rel="stylesheet">
+    <link href="static/prettify.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:400,300italic,100,100italic,300" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]><script src="static/html5shiv.min.js"></script><![endif]-->
+  </head>
+  <body data-target=".content-nav">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="span5">
+            <h1>Mobilizer</h1>
+          </div>
+          <div class="span7">
+            <menu>
+              <ul>
+                <li><a href="http://github.com/Redmart/os-mobilizer" data-title="View GitHub Project" class="menu github"><img src="static/icon-github.png" alt="GitHub"/></a></li>
+              </ul>
+            </menu>
+          </div>
+      </div>
+    </header>
+    <section id="subtitle">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h2>A distribution/testing platform for mobile applications</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="body">
+      <div class="container">
+        <div class="row">
+          <div class="span9">
+            <h3 id="introduction">Introduction</h3>
+
+            <p>Distributing mobile applications internaly for testing have always been a hassle as different platforms have their own way of distribution quirks. Adding to that, real world testing is difficult unless proper UI testing is carried out on actual devices under different scenarios.</p>
+
+            <p>Mobilizer is created to solve these two problems. A single interface to distribute mobile appplications regardless of platform (currently supporting iOS and Android) as well as to run automated UI testing on those applications using actual devices.</p>
+
+            <p>The beauty of this platform is that it is integrated seamlessly with the development workflow and removes any extra overhead to developers to distribute their apps to QA testers. In addition, it gives QA testers full autonomy to test the applications using a simple UI interface similar to a cloud device testing plaform.</p>
+
+            <h3 id="dependencies">Dependencies</h3>
+
+            <p>There are several dependencies for Mobilizer to work. As the project is still in it's infant stage, to be used out of the box, these are hard requirements currently. More features will be added to adopt variations of development workflow in future while eliminating any hard dependencies.</p>
+
+            <h4><a href="https://developer.github.com/v3/repos/releases/">Github Releases</a></h4>
+
+            <p>Mobilizer primarily uses the GitHub releases API to distribute versioned applications. To ensure you are able to download a specific version of your application, create a release based off the branch you are working on. Ideally the release should be created once your CI build succeeds.</p>
+
+            <h4><a href="https://aws.amazon.com/s3/">AWS S3</a></h4>
+
+            <p>AWS S3 is the default option used for storing all the build artifacts as well as any additional files required for Mobilizer in the backend. Option to specify custom storage location will be added in future.</p>
+
+            <h4><a href="http://www.mongodb.org/downloads">Mongo Db</a></h4>
+
+            <p>Mongo DB is the default database option used by Mobilizer. You could either run the database locally in the server or have it hosted in the cloud.</p>
+
+            <h4>Google OAuth</h4>
+
+            <p>Mobilizer uses Google authentication as the default mechanism to provide users access to the platform though currently there is no user management.</p>
+
+            <h4>Device Terminal</h4>
+
+            <p>Mobilizer depends on a device terminal to run tests on actual devices. In order to run tests on both Android and iOS devices, the device terminal needs to be running Mac OS.</p>
+
+            <h3 id="setting_up">Setting up Mobilizer</h3>
+
+            <h4>Prerequisites</h4>
+
+            <p>
+            <ul>
+              <li><a href="https://www.mongodb.org/downloads">MongoDB</a></li>
+              <li><a href="https://nodejs.org">Node.js</a> (>= 0.12)</li>
+            </ul>
+            </p>
+
+            <h4>Getting Started</h4>
+
+            <p>Getting the Mobilizer server up and running is fairly straight forward. Follow the steps below to start the backend server.
+            <pre class="prettyprint"># Get the latest snapshot
+$ git clone --depth=1 https://github.com/Redmart/os-mobilizer.git Mobilizer
+$ cd Mobilizer
+$ git remote rm origin
+
+# Go to backend/config and edit both env.local.js and env.prod.js
+# Add in all the required fields in both those files
+
+# Install NPM dependences for frontend
+$ cd frontend
+$ npm install
+
+# Go to frontend/js/config and edit both env.local.js and env.prod.js
+# Add in all the required fields in both those files
+
+# Install NPM dependencies for backend
+$ cd ../backend
+$ npm install
+
+$ node server.js</pre></p>
+
+            <p>Update your local nginx conf with the following. Replace root to point to absolute path of frontend/source folder.
+            <pre class="prettyprint"># Mobilizer development environment
+server {
+    listen 9000;
+    server_name localhost;
+    root {path_to_frontend_source_folder};
+    index index.html;
+    client_max_body_size 10M;
+
+    # Disable caching in development
+    add_header Cache-Control 'no-cache';
+    # Relay all API calls to avoid CORS restriction
+    location /api {
+        rewrite ^/api/(.*) /$1 break;
+        proxy_pass http://localhost:9081/;
+    }
+    location ~* ^/socket.io/(.*) {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+
+        proxy_pass http://localhost:9081/socket.io/$1$is_args$args;
+        proxy_redirect off;
+
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+
+        proxy_buffers 8 2m;
+        proxy_buffer_size 10m;
+        proxy_busy_buffers_size 10m;
+    }
+
+    location / {
+        # Forward missing files to the client-side router
+        try_files $uri $uri/ /index.html;
+    }
+}</pre></p>
+
+            <p>Head over to <code>http://localhost:9000</code> to check out Mobilizer.</p>
+
+            <h4>Keychain for iOS projects</h4>
+
+            <p>As iOS distribution is more complex than Android, there are some additional steps that need to be done before Mobilizer can function properly. Follow the steps below to successfully set up a keychain for Mobilizer.
+            <pre class="prettyprint">1) Open Keychain Access
+2) Go to File - New Keychain
+3) Save the name as 'mobilizer' in the default location with the password 'mobilizer'
+4) Go to Certificate Assistant - Request a Certificate from a Certificate Authority
+5) Set Common Name as application name, i.e. MobilizerDist
+6) Select 'Save to disk' and 'Let me specify key pair information'
+7) Go to Apple Developer Portal and generate a Distribution certifcate using the CertificateSigningRequest
+8) Download the certificate and add it to the mobilizer keychain
+9) Right click the newly added private key, go to Access Control and select 'Allow all applications to access this item'
+10) Repeat steps 4-9 for a Development certificate</pre></p>
+
+            <h3 id="new_project">Adding a new project</h3>
+            <p>Refer to the description of each of the fields below for adding a new project successfully.</p>
+            
+            <h5 class="clearfix">NAME</h5>
+            <ul>
+              <li>
+                Unique project name for easier identification.
+              </li>
+            </ul>
+            <h5 class="clearfix">REPO</h5>
+            <ul>
+              <li>
+                GitHub repository name of the project. This will be used to retrieve the releases published for this project.
+              </li>
+            </ul>
+            <h5 class="clearfix">PLATFORM</h5>
+            <ul>
+              <li>
+                Currently Mobilizer only supports iOS and Android platforms.
+              </li>
+            </ul>
+            <h5 class="clearfix">URI</h5>
+            <ul>
+              <li>
+                Mobilizer project uri to access everything related to the project. It will be of the format <code>https://{hostname}/projects/{uri}</code>.
+              </li>
+            </ul>
+            <h5 class="clearfix">ALPHA/BETA PACKAGE IDENTIFIERS</h5>
+            <ul>
+              <li>
+                Each mobile application will have a unique identifier. Mobilizer needs this to be able to distribute apps as well as to codesign applications in the case of iOS. Usually they are of the format <code>com.{company}.{application_name}</code>.
+              </li>
+            </ul>
+            <h5 class="clearfix">VERSION NUMBER REGEX PATTERN & MATCHING GROUP</h5>
+            <ul>
+              <li>
+                To extract the application version number from the GitHub release name. E.g.
+                <pre class="prettyprint">GitHub release name = "Version 1.0.1 Build 211"
+Regex pattern = "Version \*|\d+(\.\d+){0,2}(\.\*)?((\.\d+))"
+Matching group = 0
+
+Version number = 1.0.1</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">BUILD NUMBER REGEX PATTERN & MATCHING GROUP</h5>
+            <ul>
+              <li>
+                To extract the application build number from the GitHub release name. E.g.
+                <pre class="prettyprint">GitHub release name = "Version 1.0.1 Build 211"
+Regex pattern = "(\d+$)"
+Matching group = 0
+
+Build number = 211</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">VERSION NUMBER SUFFIX REGEX PATTERN & MATCHING GROUP</h5>
+            <ul>
+              <li>
+                To extract the version number suffix from the GitHub release name. Usually most applications will suffix the build number to their version number. E.g.
+                <pre class="prettyprint">GitHub release name = "Version 1.0.1 Build 211"
+Regex pattern = "(\d+$)"
+Matching group = 0
+
+Version number suffix = 211
+Actual version number = 1.0.1.211</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">ALPHA/BETA URL REGEX PATTERN & MATCHING GROUP</h5>
+            <ul>
+              <li>
+                To extract the download link to the alpha/beta build from the GitHub release body. E.g.
+                <pre class="prettyprint">GitHub release body = "Alpha download link - http://bit.ly/18P2j4k"
+Regex pattern = "Alpha download link - (((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})"
+Matching group = 1
+
+Download link = http://bit.ly/18P2j4k</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">ALPHA/BETA REGEX PATTERN</h5>
+            <ul>
+              <li>
+                To mark the application as an alpha/beta build by matching the regex in the GitHub release name/body. If both alpha and beta regex patterns match, the release will be parsed as 2 separate releases automatically. E.g.
+                <pre class="prettyprint">GitHub release body = "Alpha download link - http://bit.ly/18P2j4k"
+Regex pattern = "Alpha"
+
+Alpha build = true</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">S3 BUCKET NAME <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Mobilizer will use this bucket to download any resources related to iOS such as build artifacts, code signing provisioning profiles etc.
+              </li>
+            </ul>
+            <h5 class="clearfix">S3 OTA BUILD PATH <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Mobilizer will store all .ipa and .plist files required for over-the-air (OTA) installations of iOS applications in this path relative to the bucket name specified above.
+              </li>
+            </ul>
+            <h5 class="clearfix">S3 PROVISIONING PROFILE PATH <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Mobilizer will retrieve any provisioning profiles required for building XCode projects and/or code signing for OTA installations in this path relative to the bucket name specified above.
+              </li>
+            </ul>
+            <h5 class="clearfix">S3 ALPHA/BETA PROVISIONING PROFILE <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Mobilizer will use these specified provisioning profiles for the respective builds when code signing for OTA installations.<br>
+                <span class="label label-important">Important:</span> Please ensure the profiles are valid with matching private keys already present in the device terminal.
+              </li>
+            </ul>
+            <h5 class="clearfix">ALPHA/BETA PRODUCT NAME <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Mobilizer will use these specified product names for the respective builds when code signing for OTA installations.<br>
+                <span class="label label-important">Important:</span> They have to match the product name specified in the XCode project based on the build environment.
+              </li>
+            </ul>
+            <h5 class="clearfix">REQUIRES TESTING</h5>
+            <ul>
+              <li>
+                This specifies whether the project requires any device testing. If checked, additional details listed below will be required.
+              </li>
+            </ul>
+            <h5 class="clearfix">CALABASH FEATURE GITHUB URL</h5>
+            <ul>
+              <li>
+                Since Mobilizer uses Calabash as its testing framework, it requires a directory that follows the <a href="http://developer.xamarin.com/guides/testcloud/calabash/creating-calabash-tests/">Cucumber structure</a>. Currently Mobilizer requires this directory to be hosted in GitHub.<br><br>
+                Ideally it should reside in the same repository as the project. As SVN will be used to clone this directory directly, please specify the URL in this format.
+                <pre class="prettyprint">If using master branch:
+https://github.com/{organization}/{repo}/trunk/{path}
+
+If using other branches:
+https://github.com/{organization}/{repo}/branches/{branch_name}/{path}</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">BUILD SOURCE <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                This specifies whether the tests will be done using an existing repository that has already been cloned on the device terminal or using a build artifact downloaded from S3. Currently only iOS projects have the option to run tests using an existing repository.
+              </li>
+            </ul>
+            <h5 class="clearfix">REPO PATH <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Relative path to the cloned repository in the device terminal after SSH.
+              </li>
+            </ul>
+            <h5 class="clearfix">XCODE WORSKPACE/SCHEME/CONFIGURATION <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                These fields are required for building the XCode project using <a href="https://github.com/facebook/xctool">xctool</a>.<br>
+                <span class="label label-important">Important:</span> Be sure to specify the Calabash scheme as the application needs to be built with the Calabash framework.
+              </li>
+            </ul>
+
+            <h4>Add private key for iOS projects</h4>
+
+            <p>To allow proper code signing, a valid provisioning profile must be uploaded to the S3 provisioning profile path specified above.
+            <pre class="prettyprint">1) Go to Apple Developer Portal
+2) Generate a provisioning profile based on the distribution certificate created when setting up Mobilizer
+3) Ensure the correct app id is chosen based on the environment (alpha or beta)
+4) Upload both the alpha and beta provisioning profiles to the specified S3 path and make them public
+</pre></p>
+
+            <h3 id="new_device">Adding a new device</h3>
+            <p>Refer to the description of each of the fields below for adding a new device successfully.</p>
+
+            <h5 class="clearfix">NAME</h5>
+            <ul>
+              <li>
+                Unique device name for easier identification.
+              </li>
+            </ul>
+            <h5 class="clearfix">PLATFORM</h5>
+            <ul>
+              <li>
+                Device platfom. Currently Mobilizer only supports iOS and Android.
+              </li>
+            </ul>
+            <h5 class="clearfix">DEVICE ID/UDID</h5>
+            <ul>
+              <li>
+                Mobilizer needs the device specific id in order to manage multiple devices connected to the device terminal. The following commands can be used to retrieve the ids.
+                <pre class="prettyprint">Android Devices: adb devices
+iOS Devices: instruments -s devices</pre>
+              </li>
+            </ul>
+            <h5 class="clearfix">DEVICE IP ADDRESS <span class="label">iOS</span></h5>
+            <ul>
+              <li>
+                Mobilizer needs the Wifi IP address of the connected iOS device in order for the device terminal to communicate with the Calabash test server in the application.
+              </li>
+            </ul>
+            <h5 class="clearfix">IS TABLET</h5>
+            <ul>
+              <li>
+                Specifies if the device is a tablet or a phone. Mobilizer will use this to run tablet specific Calabash features on the device. In order for Mobilizer to identify tablet-specific features, prefix the name of the feature with 'tablet_'. E.g.
+                <pre class="prettyprint">Phone feature name: login.feature
+Tablet feature name: tablet_login.feature</pre>
+              </li>
+            </ul>
+
+            <h3 id="additional_settings">Additional settings</h3>
+            <p>These are global settings that are required for Mobilizer to work.</p>
+
+            <h5 class="clearfix">TRAVIS TOKEN <span class="label">Optional</span></h5>
+            <ul>
+              <li>
+                Displays the latest build status from Travis CI if specified.
+              </li>
+            </ul>
+
+            <h5 class="clearfix">DEVICE TERMINAL HOSTNAME/PASSWORD</h5>
+            <ul>
+              <li>
+                Required to SSH into the device terminal.
+              </li>
+            </ul>
+
+            <h5 class="clearfix">GITHUB USERNAME/PASSWORD</h5>
+            <ul>
+              <li>
+                Required to SVN checkout Calabash features directory from GitHub directly as git does not support sparse clone.
+              </li>
+            </ul>
+
+            <h3 id="contributing">Contributing</h3>
+            <p>If you would like to contribute code you can do so through GitHub by forking the repository and sending a pull request.</p>
+            <p>When submitting code, please make every effort to follow existing conventions and style in order to keep the code as readable as possible.</p>
+            <p>Before your code can be accepted into the project you must also sign the <a href="http://goo.gl/forms/R9Lkp7fKd6">Individual Contributor License Agreement (CLA)</a>.</p>
+
+            <h3 id="license">License</h3>
+            <pre>Copyright 2015 RedMart Limited.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+          </div>
+          <div class="span3">
+            <div class="content-nav" data-spy="affix" data-offset-top="80">
+              <ul class="nav nav-tabs nav-stacked primary">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#dependencies">Dependencies</a></li>
+                <li><a href="#setting_up">Setting Up Mobilizer</a></li>
+                <li><a href="#new_project">Adding a new project</a></li>
+                <li><a href="#new_device">Adding a new device</a></li>
+                <li><a href="#additional_settings">Additional settings</a></li>
+                <li><a href="#contributing">Contributing</a></li>
+                <li><a href="#license">License</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12 logo">
+            <a href="https://redmart.com"><img src="static/logo-redmart.png" alt="RedMart Limited."/></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="static/bootstrap.min.js"></script>
+    <script src="static/jquery.smooth-scroll.min.js"></script>
+    <script src="static/prettify.js"></script>
+    <script type="text/javascript">
+        // Syntax highlight code blocks.
+        prettyPrint();
+
+        // Spy on scroll position for real-time updating of current section.
+        $('body').scrollspy();
+
+        // Use smooth-scroll for internal links.
+        $('a').smoothScroll();
+
+        // Enable tooltips on the header nav image items.
+        $('.menu').tooltip({
+          placement: 'bottom',
+          trigger: 'hover',
+          container: 'body',
+          delay: {
+            show: 500,
+            hide: 0
+          }
+        });
+    </script>
+  </body>
+</html>
