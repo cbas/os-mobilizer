@@ -1,0 +1,846 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"si",
+				"size"
+			],
+			[
+				"auth",
+				"authRes"
+			],
+			[
+				"log",
+				"logout"
+			],
+			[
+				"server",
+				"serverLogout"
+			],
+			[
+				"deve",
+				"developReleases"
+			],
+			[
+				"rep",
+				"repo"
+			],
+			[
+				"cont",
+				"content"
+			],
+			[
+				"red",
+				"redirectURL"
+			],
+			[
+				"set",
+				"setViews"
+			],
+			[
+				"ge",
+				"get	Get Elements"
+			],
+			[
+				"rest",
+				"restler"
+			],
+			[
+				"con",
+				"controllers"
+			],
+			[
+				"pah",
+				"pathname"
+			],
+			[
+				"se",
+				"session"
+			],
+			[
+				"ios",
+				"iosProjs"
+			],
+			[
+				"and",
+				"androidProjs"
+			],
+			[
+				"io",
+				"iosProjs"
+			],
+			[
+				"an",
+				"androidProjs"
+			],
+			[
+				"dis",
+				"displayName"
+			],
+			[
+				"mo",
+				"mobilizer"
+			],
+			[
+				"parse",
+				"parseRelease"
+			],
+			[
+				"requi",
+				"requirejs"
+			],
+			[
+				"mat",
+				"matchRegex"
+			],
+			[
+				"proj",
+				"projectURI"
+			],
+			[
+				"proje",
+				"projectURI"
+			],
+			[
+				"andr",
+				"androidProj"
+			],
+			[
+				"Proj",
+				"Projects"
+			],
+			[
+				"mod",
+				"modules"
+			],
+			[
+				"Mod",
+				"Models"
+			],
+			[
+				"Coll",
+				"Collections"
+			],
+			[
+				"to",
+				"toJSON"
+			],
+			[
+				"Pro",
+				"Project"
+			],
+			[
+				"get",
+				"getToken"
+			],
+			[
+				"loc",
+				"localhost"
+			],
+			[
+				"api",
+				"apiBasePath"
+			],
+			[
+				"lo",
+				"localhost"
+			],
+			[
+				"ap",
+				"api"
+			],
+			[
+				"dve",
+				"develop"
+			],
+			[
+				"pars",
+				"parseRelease"
+			],
+			[
+				"par",
+				"parseRelease"
+			],
+			[
+				"l",
+				"listenTo"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"for",
+				"format"
+			],
+			[
+				"ex",
+				"expected"
+			],
+			[
+				"ma",
+				"match"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"fn",
+				"function"
+			],
+			[
+				"th",
+				"thead	Tag"
+			],
+			[
+				"re",
+				"release"
+			],
+			[
+				"mast",
+				"masterReleases"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"h",
+				"h1	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "frontend/source/js/libs/parseRelease.js",
+			"settings":
+			{
+				"buffer_size": 2773,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Preferences: Browse Packages"
+			],
+			[
+				"setstsy",
+				"Set Syntax: Stylus"
+			],
+			[
+				"setshm",
+				"Set Syntax: HTML"
+			],
+			[
+				"setsyn",
+				"Set Syntax: nginx"
+			],
+			[
+				"setngi",
+				"Set Syntax: nginx"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"setsjs",
+				"Set Syntax: JSON"
+			],
+			[
+				"ngi",
+				"Set Syntax: nginx"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"sethtml",
+				"Set Syntax: HTML"
+			]
+		],
+		"width": 456.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Joshua/Development/mobilizer/frontend/package.json",
+		"/Users/Joshua/Development/mobilizer/nginx/nginx.conf",
+		"/Users/Joshua/Development/mobilizer/frontend/source/styles/app.styl",
+		"/Users/Joshua/Development/mobilizer/frontend/source/styles/app.css",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/app.js",
+		"/Users/Joshua/Development/mobilizer/backend/app/app.js",
+		"/usr/local/etc/nginx/nginx.conf",
+		"/Users/Joshua/Development/mobilizer/ci/Gruntfile.js",
+		"/Users/Joshua/Development/mobilizer/frontend/Gruntfile.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Releases.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Landing.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/projects/projectslist.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/landing/landing.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Layouts.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/projects/ios.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/projects/android.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/helpers/ifCond.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/landing/unauthorized.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/User.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Session/Base.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/env.local.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/env.testing.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/env.staging.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/env.prod.js",
+		"/Users/Joshua/Development/mobilizer/backend/app/controllers/user.js",
+		"/Users/Joshua/Development/mobilizer/backend/app/controllers/login.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/router.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/layouts/wide.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Session/Google.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/fallback.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/loader.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/index.html",
+		"/Users/Joshua/Development/mobilizer/frontend/tests/nodeunit/parseRelease_test.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/router.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/libs/parseRelease.js",
+		"/Users/Joshua/Development/mobilizer/.travis.yml",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/main.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Session/Account.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/header/header.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/styles/libs/bootstrap/input-groups.styl",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/landing/landing.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Header.js",
+		"/Users/Joshua/Development/Golden Grocer/golden-grocer.sublime-project",
+		"/Users/Joshua/Development/authorizer/authorizer.sublime-project",
+		"/Users/Joshua/Development/mobilizer/frontend/.jshintrc",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/landing/android.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/components/Title.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/express.js",
+		"/Users/Joshua/Development/mobilizer/backend/package.json",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/constants.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/header/navbar.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/landing/ios.html",
+		"/Users/Joshua/Development/mobilizer/backend/server.js",
+		"/Users/Joshua/Development/mobilizer/backend/app/controllers/projects.js",
+		"/Users/Joshua/Development/mobilizer/backend/config/db.js",
+		"/Users/Joshua/Development/mobilizer/backend/app/controllers/auth.js",
+		"/Users/Joshua/Development/mobilizer/nginx/conf.d/hosts.conf",
+		"/Users/Joshua/Development/mobilizer/nginx/conf.d/routes.nginx",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/conf/env.apidev.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/conf/env.dev.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/conf/env.prod.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/conf/env.staging.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/iOS.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/layouts/android.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/modules/Projects.js",
+		"/Users/Joshua/Development/mobilizer/frontend/tests/android_release_test.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/helpers/parseRelease.js",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/libs/handlebars.helpers.js",
+		"/Users/Joshua/Development/mobilizer/ci/package.json",
+		"/Users/Joshua/Development/mobilizer/ci/start.sh",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/layouts/ios.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/js/templates.built.js",
+		"/Users/Joshua/Development/mobilizer/app/views/ios.handlebars",
+		"/Users/Joshua/Development/mobilizer/app/views/android.handlebars",
+		"/Users/Joshua/Development/mobilizer/app/controllers/releases.js",
+		"/Users/Joshua/Development/mobilizer/config/router.js",
+		"/Users/Joshua/Development/mobilizer/package.json",
+		"/Users/Joshua/Development/mobilizer/frontend/source/package.json",
+		"/Users/Joshua/Development/mobilizer/frontend/source/humans.txt",
+		"/Users/Joshua/Development/mobilizer/README.md",
+		"/Users/Joshua/Development/mobilizer/frontend/README.md",
+		"/Users/Joshua/Development/mobilizer/ci/server.sh",
+		"/Users/Joshua/Development/mobilizer/tests/android_release_test.js",
+		"/Users/Joshua/Development/mobilizer/backend/README.md",
+		"/Users/Joshua/Development/mobilizer/frontend/source/robots.txt",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/android.html",
+		"/Users/Joshua/Development/mobilizer/frontend/source/templates/ios.html",
+		"/Users/Joshua/Development/mobilizer/mobilizer.sublime-project",
+		"/Users/Joshua/Development/mobilizer/frontend/source/img/glyphicons-halflings.png",
+		"/Users/Joshua/Development/iosapp/.travis.yml",
+		"/Users/Joshua/Development/mobile-releaser/Gruntfile.js",
+		"/Users/Joshua/Development/mobile-releaser/ci/package.json",
+		"/Users/Joshua/Development/mobile-releaser/app/controllers/releases.js",
+		"/Users/Joshua/Development/mobile-releaser/package.json",
+		"/Users/Joshua/Development/mobile-releaser/app/ci/Gruntfile.js",
+		"/Users/Joshua/Development/mobile-releaser/app/ci/package.json",
+		"/Users/Joshua/Development/mobile-releaser/server.js",
+		"/Users/Joshua/Development/mobile-releaser/config/env.prod.js",
+		"/Users/Joshua/Development/mobile-releaser/.travis.yml",
+		"/Users/Joshua/Development/mobile-releaser/app/views/layouts/index.handlebars",
+		"/Users/Joshua/Development/mobile-releaser/public/js/app.js",
+		"/Users/Joshua/Development/mobile-releaser/public/css/app.css",
+		"/Users/Joshua/Development/mobile-releaser/app/views/ios.handlebars",
+		"/Users/Joshua/Development/mobile-releaser/app/views/android.handlebars",
+		"/Users/Joshua/Development/mobile-releaser/config/router.js",
+		"/Users/Joshua/Development/mobile-releaser/config/env.local.js",
+		"/Users/Joshua/Development/mobile-releaser/README.md",
+		"/Users/Joshua/Development/mobile-releaser/app/tests/ghost/android_test.js",
+		"/Users/Joshua/Development/mobile-releaser/app/views/index.handlebars",
+		"/Users/Joshua/Development/mobile-releaser/mobile-releaser.sublime-project",
+		"/Users/Joshua/Development/mobile-releaser/app/views/partials/builds.handlebars",
+		"/Users/Joshua/Development/mobile-releaser/app/app.js",
+		"/Users/Joshua/Development/mobile-releaser/config/express.js",
+		"/Users/Joshua/Development/mobile-releaser/app/views/home.handlebars",
+		"/Users/Joshua/Development/mobile-releaser/public/js/bootstrap.js",
+		"/Users/Joshua/Development/mobile-releaser/config/env.local.example.js",
+		"/Users/Joshua/mobile-releaser/public/index.html",
+		"/Users/Joshua/mobile-releaser/package.json",
+		"/Users/Joshua/mobile-releaser/views/index.hbs",
+		"/Users/Joshua/mobile-releaser/views/index.handlebars",
+		"/Users/Joshua/mobile-releaser/config/env.local.js",
+		"/Users/Joshua/mobile-releaser/server.js",
+		"/Users/Joshua/mobile-releaser/node_modules/consolidate/lib/consolidate.js",
+		"/Users/Joshua/mobile-releaser/config/router.js",
+		"/Users/Joshua/mobile-releaser/.gitignore",
+		"/Users/Joshua/mobile-releaser/app/views/index.html",
+		"/Users/Joshua/mobile-releaser/config/express.js",
+		"/Users/Joshua/mobile-releaser/app/app.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/Joshua/Development/mobilizer/frontend/source/js",
+			"",
+			"*.js",
+			"frontend/*",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"beta",
+			"gapi",
+			"console.log",
+			"apk",
+			"apk_",
+			"'/'",
+			"getAuth",
+			"Header",
+			"api/login",
+			"bootstrap",
+			"toJSON()",
+			"db",
+			"notLoggedIn",
+			"dev.mobilizer",
+			"localhost",
+			"dev.mobilizer",
+			"cookie",
+			"X-Frame",
+			"User",
+			"moment-timezone",
+			"restler",
+			"moment",
+			"fs",
+			"jquery",
+			"stylus",
+			"style",
+			"styles",
+			"Android.Collections.Projects",
+			"		.get('/projects/ios/:uri', Projects.iOS);\n		.get('/projects/ios/:uri', Projects.iOS);\n		.get('/projects/ios/:uri', Projects.iOS);\n		.get('/projects/ios/:uri', Projects.iOS);\nAndroid.Collections.Projects",
+			"apidev",
+			"redmart",
+			"returnValue",
+			"helpers",
+			"libs",
+			"url",
+			"navbar",
+			"releases",
+			"master",
+			"footer",
+			"categories",
+			"Cart",
+			"tpile",
+			"tear",
+			"log",
+			"\n	",
+			"  ",
+			"		\n",
+			"();\n",
+			"\n	{{#each array}}\n		<li></li>\n	{{/each}}",
+			"></",
+			"app",
+			"',)",
+			"			\n",
+			"();",
+			"\n		.post('/login', Login.login)\n		.post('/logout', Login.logout)",
+			"('/ping', function(req, res) {\n			res.send(200);\n		})",
+			"logs",
+			"RB",
+			"RBAC",
+			"	DB.on('db.ready', function () {\n		db = DB.db;\n		Actions.syncAppsWithUsers();\n		Private.fetchDefaultUserApps();\n		setInterval(Private.fetchDefaultUserApps, 30000);\n	});",
+			"googleapp: {\n			id: '1026436145178-eglfmfarkopfnj823leutk27u0s4c3u7',\n			secret: 'qwoTMbT3xoua_el2Qh3Y-1lI'\n		},",
+			"\n	});\n",
+			"\n	app.mongoconnection = mongoose.connect(app.conf.mongo.url);\n	var models_path = __dirname + '/app/models';\n	fs.readdirSync(models_path).forEach(function (file) {\n		if (~file.indexOf('.js')) {\n			requirejs(models_path + '/' + file);\n		}",
+			"\n    "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "frontend/source/js/libs/parseRelease.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								134,
+								134
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 75.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "mobilizer.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"par",
+				"frontend/source/js/libs/parseRelease.js"
+			],
+			[
+				"nginx",
+				"nginx/nginx.conf"
+			],
+			[
+				"app",
+				"frontend/source/styles/app.styl"
+			],
+			[
+				"",
+				"frontend/source/js/router.js"
+			],
+			[
+				"ap",
+				"frontend/source/js/app.js"
+			],
+			[
+				"gru",
+				"frontend/Gruntfile.js"
+			],
+			[
+				"router",
+				"frontend/source/js/router.js"
+			],
+			[
+				"rout",
+				"backend/config/router.js"
+			],
+			[
+				"load",
+				"frontend/source/js/loader.js"
+			],
+			[
+				"rou",
+				"frontend/source/js/router.js"
+			],
+			[
+				"pac",
+				"frontend/package.json"
+			],
+			[
+				"oaca",
+				"frontend/package.json"
+			],
+			[
+				"paca",
+				"frontend/package.json"
+			],
+			[
+				"trav",
+				".travis.yml"
+			],
+			[
+				"parse",
+				"frontend/source/js/libs/parseRelease.js"
+			],
+			[
+				"parserelease_test",
+				"frontend/tests/nodeunit/parseRelease_test.js"
+			],
+			[
+				"releasete",
+				"frontend/tests/android_release_test.js"
+			],
+			[
+				"landand",
+				"frontend/source/templates/landing/android.html"
+			],
+			[
+				"land",
+				"frontend/source/js/modules/Landing.js"
+			],
+			[
+				"route",
+				"frontend/source/js/router.js"
+			],
+			[
+				"frontapp",
+				"frontend/source/js/app.js"
+			],
+			[
+				"lan",
+				"frontend/source/js/modules/Landing.js"
+			],
+			[
+				"landjs",
+				"frontend/source/js/modules/Landing.js"
+			],
+			[
+				"wid",
+				"frontend/source/templates/layouts/wide.html"
+			],
+			[
+				"nav",
+				"frontend/source/templates/header/navbar.html"
+			],
+			[
+				"layou",
+				"frontend/source/js/modules/Layouts.js"
+			],
+			[
+				"and",
+				"frontend/source/templates/layouts/android.html"
+			],
+			[
+				"tem",
+				"frontend/source/js/templates.built.js"
+			],
+			[
+				"main",
+				"frontend/source/js/main.js"
+			],
+			[
+				"rele",
+				"app/controllers/releases.js"
+			],
+			[
+				"ser",
+				"server.js"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"home",
+				"app/views/home.handlebars"
+			],
+			[
+				"relea",
+				"app/controllers/releases.js"
+			],
+			[
+				"publapp",
+				"public/js/app.js"
+			],
+			[
+				"homeh",
+				"app/views/home.handlebars"
+			],
+			[
+				"hom",
+				"app/views/home.handlebars"
+			],
+			[
+				"pa",
+				"package.json"
+			],
+			[
+				"local",
+				"config/env.local.js"
+			],
+			[
+				"se",
+				"server.js"
+			],
+			[
+				"exre",
+				"config/express.js"
+			],
+			[
+				"lo",
+				"app/controllers/login.js"
+			],
+			[
+				"use",
+				"app/controllers/users.js"
+			],
+			[
+				"apps",
+				"app/controllers/apps.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/Joshua/Development/Golden Grocer/golden-grocer.sublime-project"
+			],
+			[
+				"au",
+				"/Users/Joshua/rm_mobile/authorizer.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 275.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

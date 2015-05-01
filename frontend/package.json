@@ -1,0 +1,47 @@
+{
+	"name": "Mobilizer-Frontend",
+	"description": "A distribution/testing platform for mobile applications",
+	"version": "1.0.0",
+	"homepage": "https://redmart.github.io/mobilizer",
+	"author": {
+		"name": "RedMart Limited.",
+		"email": "help@redmart.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:Redmart/os-mobilizer.git"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"grunt": "*",
+		"grunt-contrib-clean": "0.4.0",
+		"grunt-contrib-connect": "0.2.0",
+		"grunt-connect-proxy": "0.1.x",
+		"grunt-contrib-copy": "0.4.0",
+		"grunt-contrib-cssmin": "0.5.0",
+		"grunt-contrib-handlebars": "*",
+		"grunt-contrib-htmlmin": "0.1.1",
+		"grunt-contrib-imagemin": "*",
+		"grunt-contrib-nodeunit": "0.4.x",
+		"grunt-contrib-requirejs": "0.4.1",
+		"grunt-contrib-stylus": "0.8.0",
+		"grunt-contrib-watch": "*",
+		"moment": "*",
+		"moment-timezone": "0.0.x",
+		"grunt-open": "*",
+		"grunt-filerev": "0.2.1",
+		"grunt-replace": "0.4.4",
+		"grunt-usemin": "2.0.0",
+		"backbone": "*",
+		"handlebars": "*",
+		"requirejs": "*",
+		"underscore": "*",
+		"socket.io-client": "*"
+	},
+	"engines": {
+		"node": "0.12.2",
+		"npm": "2.7.4",
+		"grunt": "0.4.2"
+	},
+	"keywords": []
+}

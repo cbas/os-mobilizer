@@ -1,0 +1,25 @@
+<form role="form" id="settings">
+	<input type="text" id="settingsId" name="_id" hidden="true">
+	<div class="form-group">
+		<label for="settingsTravisToken">Travis Token (Optional)</label>
+		<input type="text" class="form-control" id="settingsTravisToken" name="travis_token" placeholder="Enter travis token for build status visibility">
+	</div>
+	<div class="form-group">
+		<label for="settingsDeviceTerminalHost">Device terminal hostname</label>
+		<input type="text" class="form-control" id="settingsDeviceTerminalHost" name="device_terminal_host" placeholder="Enter device terminal hostname">
+	</div>
+	<div class="form-group">
+		<label for="settingsDeviceTerminalUsername">Device terminal username</label>
+		<input type="text" class="form-control" id="settingsDeviceTerminalUsername" name="device_terminal_username" placeholder="Enter device terminal username">
+	</div>
+	<div class="form-group">
+		<label for="settingsGithubUsername">Github username</label>
+		<input type="text" class="form-control" id="settingsGithubUsername" name="github_user" placeholder="Enter github username">
+	</div>
+		<div class="form-group">
+		<label for="settingsGithubPassword">Github password</label>
+		<input type="password" class="form-control" id="settingsGithubPassword" name="github_password" placeholder="Enter github password">
+	</div>
+	<div class="modal-footer" style="padding: 15px 20px 0;"></div>
+	<button type="submit" class="btn btn-default update-settings">Update</button>
+</form>

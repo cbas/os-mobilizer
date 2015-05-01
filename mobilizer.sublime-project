@@ -1,0 +1,24 @@
+{
+	"folders": [{
+		"path": ".",
+		"name": "Mobilizer",
+		"folder_exclude_patterns": [
+				".gitflow",
+				".idea",
+				".vagrant",
+				"node_modules",
+				"intermediate",
+				"publish",
+				"static"
+		],
+		"file_exclude_patterns": [
+				"*.sublime-workspace*"
+		]
+	}],
+	"settings": {
+		"tab_size": 3,
+		"translate_spaces_to_tabs": true,
+		"default_line_ending": "unix",
+		"trim_trailing_white_space_on_save": true
+	}
+}

@@ -1,0 +1,325 @@
+@charset 'utf-8'
+@import 'libs/bootstrap/bootstrap'
+
+#app
+	margin-top: 50px;
+	padding-top: 20px;
+
+.header
+	text-align: center;
+
+.header
+	.branches
+		display: inline-block;
+
+.centered
+	margin: 0 auto;
+	display: table;
+
+.release-notes
+	white-space: pre-line;
+	text-align: center;
+
+.loggedin
+	img
+		border-radius: 15px;
+		margin: -10px 5px;
+
+.nav-pills
+	.centered-list
+		float: none;
+		display: inline-block;
+
+.navbar-nav
+	margin 0px
+
+.version-tag
+	vertical-align middle
+
+.version-name
+	vertical-align middle
+
+.panel-heading
+	&.steps
+		color #555
+		font-size 15px
+		font-weight bold
+
+	&.footer
+		text-align center
+
+.file-list
+	height 568px
+	overflow scroll
+	background-color #F5F5F5
+	border-color #DDD
+	border-radius 4px 0 0 4px
+	padding 0
+	
+.file-list-item
+	padding 0
+	border-left 0
+	background-color #F5F5F5
+	&:first-child
+		border-top-right-radius 0
+		border-top 0
+	&:last-child
+		border-bottom-right-radius 0
+		border-bottom 0
+	&.selected
+		background-color #FFFFFF
+		
+.file-list-item a
+	display inline-block
+	padding 10px 15px 10px 15px
+	width 100%
+
+.filename-input
+	width 300px
+	float left
+	
+.admin-list-item
+	padding 0
+	border-left 0
+	background-color #F5F5F5
+	&:first-child
+		border-top-right-radius 0
+		border-top 0
+	&:last-child
+		border-bottom-left-radius 0
+		border-bottom-right-radius 0
+		border-bottom 0
+	&.selected
+		background-color #FFFFFF
+		
+.admin-list-item a
+	display inline-block
+	padding 10px 15px 10px 15px
+	width 100%
+
+.modal-sm
+	width 320px
+	
+a
+	text-decoration none
+	overflow-x auto
+	&:hover
+		text-decoration none
+	&:visited
+		text-decoration none
+	&:link
+		text-decoration none
+	&:active
+		text-decoration none
+		
+.editor {
+	height 554px
+	background-color: white;
+	border-collapse: separate; 
+	padding: 10px 4px 4px 10px; 
+	box-sizing: content-box; 
+	-webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset; 
+	box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+	overflow: scroll;
+	outline: none;
+}
+
+.editor-pre {
+	padding 0
+	margin 0
+	background-color transparent
+	border 0
+	border-radius 0
+}
+
+.editor-update {
+	float right
+	margin-left 10px
+}
+
+.editor-delete {
+	float right
+	margin-left 10px
+}
+
+.editor-new {
+	float right
+}
+
+.project-new {
+	float right
+}
+
+.editor-toolbar {
+	padding 10px 0 10px 0
+	float inherit
+	width 100%
+	height 54px
+}
+
+.editor-status {
+	float left
+	line-height	30px
+	margin-left 15px
+	color #999
+}
+
+.label
+	&.steps
+		font-size 90%
+		padding .3em .7em .3em
+		border-radius 1em
+		margin-right 10px
+		background-color #F04E4E 
+
+.scrollable-menu
+	height auto
+	max-height 200px
+	overflow-x hidden
+	margin-bottom 40px
+
+.dropdown-menu-header
+	font-size 13px
+	color #555
+	margin-left	8px
+	margin-top	5px
+	text-transform uppercase
+
+.fileinput-button
+	position relative
+	overflow hidden
+
+.fileinput-button input
+	position absolute
+	top 0
+	right 0
+	margin 0
+	opacity 0
+	-ms-filter 'alpha(opacity=0)'
+	font-size 200px
+	direction ltr
+	cursor pointer
+
+.btn-primary-default
+	background-color #f04e4e
+	color #fff
+
+	&:hover
+		color #fff
+		background-color #D63939
+
+.glyphicon-ok
+	&.green
+		float left
+		color #0c9b49
+
+.glyphicon-remove
+	&.red
+		float left
+		color #f04e4e
+
+i
+	&.run-progress
+		float left
+		font-size larger
+
+.testrun-details
+	display inline-block
+	vertical-align super
+
+.testrun-name
+	vertical-align top
+	font-size 16px
+	color #333
+	margin-left 10px
+	float left
+	font-weight bold
+
+.branch-select
+	width 100%
+	
+.admin-detail
+	padding 10px
+
+.sorting
+	text-transform none
+	text-align left
+	background #fff
+	position relative
+	margin-top 7px
+	font-weight 700
+	float right
+	font-size 14px
+	border 1px solid #e4e4e4
+	border-radius 8px
+	padding 7px 0px 6px 10px
+	box-sizing border-box
+	width 260px
+	height 34px
+
+	&:after
+		content ""
+		border-color #888 transparent
+		margin-top -2px
+		border-style solid
+		border-width 4px 4px 0 4px
+		right 9px
+		width 0
+		height 0
+		top 50%
+		z-index 8
+		position absolute
+
+	select
+		outline none
+		z-index 9
+		-webkit-appearance none
+		-moz-appearance none
+		appearance none
+		background transparent
+		border 0
+		color #333
+		font-size 14px
+		cursor pointer
+		padding 0px 20px 6px 0px
+		margin 0
+		box-sizing border-box
+		position relative
+		top 0
+		right 0
+		bottom 0
+		left 0
+		width auto
+		
+.console-output
+	display block
+	font-family monospace
+	white-space pre
+	background-color black
+	border-radius 0 0 4px 4px
+	border 0
+	color #F1F1F1
+	margin 0
+	
+.tailLog
+	background-color #696867
+	color white
+	padding 5px
+	border-radius 5px
+	position absolute
+	&:active
+		color white
+	&:visited
+		color white
+	&:link
+		color white
+	&:hover
+		color white
+		
+.pattern-field
+	float left
+	width 87%
+	margin-right 10px
+	
+.pattern-group-field
+	width 11%

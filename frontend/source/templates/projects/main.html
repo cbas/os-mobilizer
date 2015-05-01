@@ -1,0 +1,410 @@
+<div id="android">
+	<div class="well well-sm header">
+		<h3>{{#ifEquals project.platform "android"}}Android{{else}}iOS{{/ifEquals}} - {{project.name}}</h3>
+		<ul class="nav nav-pills branches">
+			{{#ifGreaterthan master.length 0}}
+				<li class="centered-list"><a href="#master" data-toggle="pill">Master <span class="badge">{{master.length}}</span></a></li>
+			{{/ifGreaterthan}}
+			{{#ifGreaterthan develop.length 0}}
+				<li class="centered-list"><a href="#develop" data-toggle="pill">Develop <span class="badge">{{develop.length}}</span></a></li>
+			{{/ifGreaterthan}}
+			{{#ifGreaterthan miscBranches.length 0}}
+				<li class="centered-list"><a href="#feature" data-toggle="pill">Branches <span class="badge">{{miscBranches.length}}</span></a></li>
+			{{/ifGreaterthan}}
+			{{#if project.testing}}
+				<li class="centered-list"><a href="#testing" data-toggle="pill">Calabash Test</a></li>
+			{{/if}}
+		</ul>
+	</div>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div class="tab-pane" id="master">
+			{{#if settings.travis_token}}
+				<div class="centered">
+					<strong>Travis status:
+						<img src="https://magnum.travis-ci.com/{{settings.github_name}}/{{project.repo}}.svg?token={{settings.travis_token}}&branch=master" style="vertical-align:bottom"></strong>
+				</div><br>
+			{{/if}}
+
+			<ul class="list-group">
+				{{#each master}}
+					<li class="list-group-item">
+						{{#if alpha_download_link}}
+							<div class="centered">
+								<a href="{{alpha_download_link}}" class="btn btn-lg btn-success">Download #{{build_number}}</a>
+							</div>
+						{{/if}}
+						{{#if beta_download_link}}
+							<div class="centered">
+								<a href="{{beta_download_link}}" class="btn btn-lg btn-success">Download #{{build_number}}</a>
+							</div>
+						{{/if}}
+						<div class="centered">
+							<h4>
+								<strong class="version-name">{{name}}</strong>
+								{{#if alpha}}
+									<span class="label label-warning version-tag">Alpha</span>
+								{{/if}}
+								{{#if beta}}
+									<span class="label label-info version-tag">Beta</span>
+								{{/if}}
+							</h4>
+						</div>
+						<div class="centered release-notes">{{body}}</div><br>
+						<div class="centered small">{{release_date}}</div>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="tab-pane" id="develop">
+			{{#if settings.travis_token}}
+				<div class="centered">
+					<strong>Travis status:
+						<img src="https://magnum.travis-ci.com/{{settings.github_name}}/{{project.repo}}.svg?token={{settings.travis_token}}&branch=develop" style="vertical-align:bottom"></strong>
+				</div><br>
+			{{/if}}
+
+			<ul class="list-group">
+				{{#each develop}}
+					<li class="list-group-item">
+						{{#if alpha_download_link}}
+							<div class="centered">
+								<a href="{{alpha_download_link}}" class="btn btn-lg btn-success">Download #{{build_number}}</a>
+							</div>
+						{{/if}}
+						{{#if beta_download_link}}
+							<div class="centered">
+								<a href="{{beta_download_link}}" class="btn btn-lg btn-success">Download #{{build_number}}</a>
+							</div>
+						{{/if}}
+						<div class="centered">
+							<h4>
+								<strong class="version-name">{{name}}</strong>
+								{{#if alpha}}
+									<span class="label label-warning version-tag">Alpha</span>
+								{{/if}}
+								{{#if beta}}
+									<span class="label label-info version-tag">Beta</span>
+								{{/if}}
+							</h4>
+						</div>
+						<div class="centered release-notes">{{body}}</div><br>
+						<div class="centered small">{{release_date}}</div>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+		{{#ifGreaterthan miscBranches.length 0}}
+		<div class="tab-pane" id="feature">
+			<div class="centered">
+				<label class="sorting">Branch name:
+					<select>
+						{{#each miscBranches}}
+							<option value="{{this}}">{{this}}</option>
+						{{/each}}
+					</select>
+				</label>
+			</div><br>
+			{{#if settings.travis_token}}
+				<div class="centered">
+					<strong>Travis status:
+						<img src="https://magnum.travis-ci.com/{{settings.github_name}}/{{project.repo}}.svg?token={{settings.travis_token}}&branch={{currentBranch}}" style="vertical-align:bottom"></strong>
+				</div><br>
+			{{/if}}
+
+			<ul class="list-group">
+				{{#each feature}}
+					<li class="list-group-item">
+						{{#if alpha_download_link}}
+							<div class="centered">
+								<a href="{{alpha_download_link}}" class="btn btn-lg btn-success">Download #{{build_number}}</a>
+							</div>
+						{{/if}}
+						{{#if beta_download_link}}
+							<div class="centered">
+								<a href="{{beta_download_link}}" class="btn btn-lg btn-success">Download #{{build_number}}</a>
+							</div>
+						{{/if}}
+						<div class="centered">
+							<h4>
+								<strong class="version-name">{{name}}</strong>
+								{{#if alpha}}
+									<span class="label label-warning version-tag">Alpha</span>
+								{{/if}}
+								{{#if beta}}
+									<span class="label label-info version-tag">Beta</span>
+								{{/if}}
+							</h4>
+						</div>
+						<div class="centered release-notes">{{body}}</div><br>
+						<div class="centered small">{{release_date}}</div>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+		{{/ifGreaterthan}}
+		<div class="tab-pane" id="testing">
+			<ul class="nav nav-tabs" id="testtabs" role="tablist">
+				<li class="active"><a href="#new" data-toggle="tab">New Test</a></li>
+				<li><a href="#testfeatures" data-toggle=tab>Test Features</a></li>
+				{{#ifGreaterthan testRuns.length 0}}
+					<li><a href="#result" data-toggle="tab">Test Results</a></li>
+				{{/ifGreaterthan}}
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane active" id="new">
+					<br>
+					<div class="panel panel-default">
+					  <div class="panel-heading steps"><span class="label steps">1</span>Choose app</div>
+					  <div class="panel-body">
+					    {{#ifEquals project.platform "android"}}
+					    <p>
+						    <div class="btn-group" id="appoptionstab">
+						      <a class="btn btn-primary active app-options" href="#release-app" data-toggle="tab">Existing Release</a>
+							  <a class="btn btn-primary app-options" href="#upload-app" data-toggle="tab">Upload apk</a>
+							</div>
+						</p>
+						{{/ifEquals}}
+						<div class="tab-content">
+							<div class="tab-pane active" id="release-app">
+								<p>
+								    <b>Branch  </b>
+								</p>
+								<div class="btn-group branch-select">
+								  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" {{#ifEquals allBranches.length 0}}disabled="disabled"{{/ifEquals}}>
+								    {{ternary selectedTestBranch selectedTestBranch "No branches"}}<span class="caret" style="margin-left:10px"></span>
+								  </button>
+								  <ul class="dropdown-menu scrollable-menu" id="branch" role="menu">
+								  	{{#each allBranches}}
+								    <li><a href="#">{{this}}</a></li>
+								    {{/each}}
+								  </ul>
+								</div>
+								<br><br>
+								<p>
+									<b>App version  </b>
+								</p>
+								<div class="btn-group appver-select">
+								  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" {{#ifEquals testReleases.length 0}}disabled="disabled"{{/ifEquals}}>
+								    {{ternary selectedTestRelease (formatReleaseName selectedTestRelease) "No releases"}} <span class="caret" style="margin-left:10px"></span>
+								  </button>
+								  <ul class="dropdown-menu scrollable-menu" id="appver" role="menu">
+								    {{#each testReleases}}
+								    <li><a href="#" data-release="{{json this}}">{{formatReleaseName this}}</a></li>
+								    {{/each}}
+								  </ul>
+								</div>
+							</div>
+							<div class="tab-pane" id="upload-app">
+								<p>
+									<span class="btn btn-primary fileinput-button">
+								        <i class="glyphicon glyphicon-plus"></i>
+								        <span>Select apk</span>
+								        <!-- The file input field used as target for the file upload widget -->
+								        <input id="apkUpload" type="file" name="files[]" accept=".apk">
+								    </span>
+							    </p>
+						        <!-- The global progress bar -->
+							    <div id="apkProgress" class="progress">
+							    	<br>
+							    	<br>
+							        <div class="progress-bar progress-bar-success"></div>
+							    </div>
+							    <!-- The container for the uploaded files -->
+							    <div id="apkFiles" class="files"></div>
+							</div>
+						</div>
+					  </div>
+					  <div class="panel-heading steps"><span class="label steps">2</span>Choose device</div>
+					  <div class="panel-body">
+					    <p>
+						    <b>Device  </b>
+						</p>
+						<div class="btn-group branch-select">
+						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" {{#ifEquals testDevices.length 0}}disabled="disabled"{{/ifEquals}}>
+						    {{ternary selectedTestDevice selectedTestDevice.name "No devices"}}<span class="caret" style="margin-left:10px"></span>
+						  </button>
+						  <ul class="dropdown-menu scrollable-menu" id="device" role="menu">
+						  	<li><label class="nav-header dropdown-menu-header">Phones</label></li>
+						  	<ul class="nav nav-list tree" role="menu">
+							  	{{#each testDevices}}
+							  		{{#ifEquals this.tablet false}}
+							    		<li><a href="#" id="{{id}}" data-device="{{json this}}">{{name}}</a></li>
+							    	{{/ifEquals}}
+							    {{/each}}
+						    </ul>
+						  	<li><label class="nav-header dropdown-menu-header">Tablets</label></li>
+							<ul class="nav nav-list tree" role="menu">
+							  	{{#each testDevices}}
+							    	{{#ifEquals this.tablet true}}
+							    		<li><a href="#" id="{{id}}" data-device="{{json this}}">{{name}}</a></li>
+							    	{{/ifEquals}}
+							    {{/each}}
+						    </ul>
+						  </ul>
+						</div>
+					  </div>
+					  <div class="panel-heading steps"><span class="label steps">3</span>Upload Calabash tests</div>
+					  <div class="panel-body">
+					    <p>
+						    <div class="btn-group" id="uploadoptionstab">
+						      <a class="btn btn-primary active upload-options" href="#github" data-toggle="tab">Use GitHub</a>
+							  <a class="btn btn-primary upload-options" href="#upload-test" data-toggle="tab">Upload Test</a>
+							</div>
+						</p>
+						<div class="tab-content">
+							<div class="tab-pane active" id="github"></div>
+							<div class="tab-pane" id="upload-test">
+							    <p>
+							    	<span class="btn btn-primary fileinput-button">
+								        <i class="glyphicon glyphicon-plus"></i>
+								        <span>Select zip file</span>
+								        
+								        <input id="zipUpload" type="file" name="files[]" accept=".zip">
+								    </span>
+							        
+								    <div id="zipProgress" class="progress">
+								    	<br>
+								    	<br>
+								        <div class="progress-bar progress-bar-success"></div>
+								    </div>
+								    
+								    <div id="zipFiles" class="files"></div>
+							    </p>
+							</div>
+						</div>
+					  </div>
+					  {{#ifEquals selectedTestSource "zip"}}
+						  {{#ifGreaterthan testCases.length 0}}
+							  <div class="panel-heading steps"><span class="label steps">4</span>Choose test</div>
+							  <div class=panel-body>
+								<p>
+									<b>Tests  </b>
+								</p>
+								<div class="btn-group test-select">
+								  <button type=button class="btn btn-default dropdown-toggle" data-toggle=dropdown>
+								    {{ternary selectedTestCase selectedTestCase.name "No tests"}} <span class="caret" style="margin-left:10px"></span>
+								  </button>
+								  <ul class="dropdown-menu scrollable-menu" id="testcase" role="menu">
+								    {{#each testCases}}
+								    <li><a href="#" data-test="{{json this}}">{{name}}</a></li>
+								    {{/each}}
+								  </ul>
+								</div>
+							  </div>
+						  {{/ifGreaterthan}}
+					  {{/ifEquals}}
+					  {{#ifEquals selectedTestSource "github"}}
+							  <div class="panel-heading steps"><span class="label steps">4</span>Choose test</div>
+							  <div class=panel-body>
+								<p>
+									<b>Tests  </b>
+								</p>
+								<div class="btn-group test-select">
+								  <button type=button class="btn btn-default dropdown-toggle" data-toggle=dropdown {{#ifEquals testReleases.length 0}}disabled="disabled"{{/ifEquals}}>
+								    {{ternary selectedTestCase selectedTestCase.name "No tests"}} <span class="caret" style="margin-left:10px"></span>
+								  </button>
+								  <ul class="dropdown-menu scrollable-menu" id="testcase" role="menu">
+								    {{#each filteredTestFeatures}}
+								    <li><a href="#" data-test="{{json this}}">{{replaceStr name ".feature" ""}}</a></li>
+								    {{/each}}
+								  </ul>
+								</div>
+							  </div>
+					  {{/ifEquals}}
+					  <div class="panel-heading footer"><button id="startTest" type="button" class="btn btn-primary-default" style="font-weight:bold">START TEST</button></div>
+					</div>
+				</div>
+				<div class="tab-pane" id="testfeatures">
+					<div class="editor-toolbar">
+						<span class="editor-status"></span>
+						<div class="input-group filename-input">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-list-alt"></span></span>
+							<input id="featureFileName" type="text" class="form-control" placeholder="Feature file name">
+							<span class="input-group-addon featureFileExt"></span>
+						</div>
+						<button id="updateContent" type="button" class="btn btn-success editor-update">Update</button>
+						<button id="deleteContent" type="button" class="btn btn-danger editor-delete" data-toggle="modal" data-target=".delete-confirm">Delete</button>
+						<button id="newContent" type="button" class="btn btn-primary editor-new">
+							<span class="glyphicon glyphicon-plus"></span> New feature
+						</button>
+					</div>
+					<div class="panel panel-default">
+						<div class="col-md-3 file-list">
+							<ul style="list-style-type:none;padding:0;margin-bottom:0;">
+								{{#each testFeatures}}
+									<li class="list-group-item file-list-item"><a href="#" class="show-feature" id="{{path}}">{{replaceStr path ".*\/features\/" ""}}</a></li>
+								{{/each}}
+							</ul>
+						</div>
+						<div class="col-md-9" style="padding:0">
+							<div id="editor" class="editor"></div>
+						</div>
+						<div class="row"></div>
+					</div>
+					<div class="modal fade delete-confirm" tabindex="-1" role="dialog">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+								<div class="modal-body">
+									Are you sure you want to delete this file?
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+									<button type="button" class="btn btn-primary editor-delete-confirm" data-dismiss="modal">Yes</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="result">
+					<br>
+					<ul class="list-group">
+						{{#each testRuns}}
+						<div class="panel-group" id="accordion">
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h4 class="panel-title" style="overflow:hidden">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#{{id}}" style="vertical-align:super;text-decoration:none;">
+						        	{{#ifEquals this.status 'running'}}
+						        		<i class="fa fa-spinner fa-spin run-progress"></i>
+						        	{{else}}
+							        	{{#ifEquals this.status 'passed'}}
+			  				            	<span class="glyphicon glyphicon-ok green"></span>
+							        	{{else}}
+			  				            	<span class="glyphicon glyphicon-remove red"></span>
+							        	{{/ifEquals}}
+							        {{/ifEquals}}
+						        	<span style="float:left">
+										<span class="testrun-name">{{name}}</span>
+										<br>
+										{{#if testCase}}
+											<small class="text-success" style="margin-left:10px">{{testCase}}</small><br>
+										{{/if}}
+										<small style="margin-left:10px">{{timestamp}}</small>
+									</span>
+						        </a>
+						        {{#ifEquals this.status 'running'}}
+						        	<a class="glyphicon glyphicon-stop cancel-test" style="float:right" id="test_{{id}}" href="#" data-release="{{json this}}"></a>
+						        {{else}}
+						        	<a class="glyphicon glyphicon-repeat repeat-test" style="float:right" id="test_{{id}}" href="#" data-release="{{json this}}"></a>
+						        {{/ifEquals}}
+						      </h4>
+						    </div>
+						    <div id="{{id}}" class="panel-collapse collapse {{#ifEquals this.status 'running'}} in {{/ifEquals}}">
+						      <div class="panel-body" style="padding:0">
+						      	<a href="#" id="{{id}}" class="tailLog" style="display: none">Follow log</a>
+						      	<pre id="{{id}}" class="console-output">{{{logData}}}</pre>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+						<br>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

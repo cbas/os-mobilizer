@@ -1,0 +1,199 @@
+<div class='project-toolbar'>
+<button type="button" class="btn btn-default res-new" data-toggle="modal">
+	<span class="glyphicon glyphicon-plus"></span> New project
+</button>
+</div>
+<table class="table" id="projects" data-toggle="table" data-card-view="true" data-toolbar=".project-toolbar">
+		<thead>
+		<tr>
+			<th data-field="name">Name</th>
+			<th data-field="repo">Repo</th>
+			<th data-field="platform">Platform</th>
+			<th data-field="uri">Uri</th>
+			<th data-field="alpha_package">Alpha Package Name</th>
+			<th data-field="beta_package">Beta Package Name</th>
+			<th data-field="version_regex">Ver Number Regex Pattern</th>
+			<th data-field="build_regex">Build Number Regex Pattern</th>
+			<th data-field="version_suffix_regex">Ver Number Suffix Regex Pattern</th>
+			<th data-field="alpha_url_regex">Alpha URL Regex Pattern</th>
+			<th data-field="alpha_regex">Alpha Regex Pattern</th>
+			<th data-field="beta_url_regex">Beta URL Regex Pattern</th>
+			<th data-field="beta_regex">Beta Regex Pattern</th>
+			<th data-field="s3_bucket">S3 Bucket Name</th>
+			<th data-field="s3_ota_build_path">S3 OTA Build Path</th>
+			<th data-field="s3_provisioning_profile_path">S3 Provisioning Profile Path</th>
+			<th data-field="alpha_provisioning_profile">Alpha Provisioning Profile</th>
+			<th data-field="alpha_product_name">Alpha Product Name</th>
+			<th data-field="beta_provisioning_profile">Beta Provisioning Profile</th>
+			<th data-field="beta_product_name">Beta Product Name</th>
+			<th data-field="calabash_feature_url">Calabash Feature Github Url</th>
+			<th data-field="test_build_source">Test Build Source</th>
+			<th data-field="test_repo_path">Repo Path</th>
+			<th data-field="test_ios_workspace">Xcode Workspace</th>
+			<th data-field="test_ios_scheme">Xcode Scheme</th>
+			<th data-field="test_ios_configuration">Xcode Configuration</th>
+			<th data-field="testing">Testing</th>
+		</tr>
+	</thead>
+</table>
+
+<div class="modal fade new-res" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">New Project</h4>
+	      	</div>
+			<form role="form" id="projects">
+				<div class="modal-body">
+						<input type="text" id="projectId" name="_id" hidden="true">
+						<div class="form-group">
+							<label for="projectName">Name</label>
+							<input type="text" class="form-control" id="projectName" name="name" placeholder="Enter project name">
+						</div>
+						<div class="form-group">
+							<label for="projectRepo">Repo</label>
+							<input type="text" class="form-control" id="projectRepo" name="repo" placeholder="Enter project github repo">
+						</div>
+						<div class="form-group">
+							<label for="projectPlatform">Platform</label>
+							<select class="form-control" id="projectPlatform" name="platform">
+								<option value="android">Android</option>
+								<option value="ios">iOS</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="projectUri">Uri</label>
+							<input type="text" class="form-control" id="projectUri" name="uri" placeholder="Enter project uri (will apppear in url)">
+						</div>
+						<div class="form-group">
+							<label for="projectAlphaPackage">Alpha Package/Identifier</label>
+							<input type="text" class="form-control" id="projectAlphaPackage" name="alpha_package" placeholder="Enter package name or bundle identifier for alpha env">
+						</div>
+						<div class="form-group">
+							<label for="projectBetaPackage">Beta Package/Identifier</label>
+							<input type="text" class="form-control" id="projectBetaPackage" name="beta_package" placeholder="Enter package name or bundle identifier for beta env">
+						</div>
+						<div class="form-group">
+							<label for="projectVerRegex">Ver Number Regex Pattern & Matching Group Num</label>
+							<input type="text" class="form-control pattern-field" id="projectVerRegex" name="version_regex" placeholder="Enter version number regex">
+							<input type="text" class="form-control pattern-group-field" id="projectVerRegexGroup" name="version_regex_group" placeholder="Num">
+						</div>
+						<div class="form-group">
+							<label for="projectBuildRegex">Build Number Regex Pattern & Matching Group Num</label>
+							<input type="text" class="form-control pattern-field" id="projectBuildRegex" name="build_regex" placeholder="Enter build number regex">
+							<input type="text" class="form-control pattern-group-field" id="projectBuildRegexGroup" name="build_regex_group" placeholder="Num">
+						</div>
+						<div class="form-group">
+							<label for="projectVerSuffixRegex">Ver Number Suffix Regex Pattern & Matching Group Num</label>
+							<input type="text" class="form-control pattern-field" id="projectVerSuffixRegex" name="version_suffix_regex" placeholder="Enter version number suffix regex">
+							<input type="text" class="form-control pattern-group-field" id="projectVerSuffixRegexGroup" name="version_suffix_regex_group" placeholder="Num">
+						</div>
+						<div class="form-group">
+							<label for="projectAlphaURLRegex">Alpha URL Regex Pattern & Matching Group Num</label>
+							<input type="text" class="form-control pattern-field" id="projectAlphaURLRegex" name="alpha_url_regex" placeholder="Enter alpha download url regex">
+							<input type="text" class="form-control pattern-group-field" id="projectAlphaURLRegexGroup" name="alpha_url_regex_group" placeholder="Num">
+						</div>
+						<div class="form-group">
+							<label for="projectAlphaRegex">Alpha Regex Pattern</label>
+							<input type="text" class="form-control" id="projectAlphaRegex" name="alpha_regex" placeholder="Enter alpha regex">
+						</div>
+						<div class="form-group">
+							<label for="projectBetaURLRegex">Beta URL Regex Pattern & Matching Group Num</label>
+							<input type="text" class="form-control pattern-field" id="projectBetaURLRegex" name="beta_url_regex" placeholder="Enter beta download url regex">
+							<input type="text" class="form-control pattern-group-field" id="projectBetaURLRegexGroup" name="beta_url_regex_group" placeholder="Num">
+						</div>
+						<div class="form-group">
+							<label for="projectBetaRegex">Beta Regex Pattern</label>
+							<input type="text" class="form-control" id="projectBetaRegex" name="beta_regex" placeholder="Enter beta regex">
+						</div>
+						<div id="iosBuildFields">
+							<div class="form-group">
+								<label for="projectS3Bucket">S3 Bucket</label>
+								<input type="text" class="form-control" id="projectS3Bucket" name="s3_bucket" placeholder="Enter S3 bucket name">
+							</div>
+							<div class="form-group">
+								<label for="projectS3OTABuildPath">S3 OTA Build Path</label>
+								<input type="text" class="form-control" id="projectS3OTABuildPath" name="s3_ota_build_path" placeholder="Enter S3 OTA build path">
+							</div>
+							<div class="form-group">
+								<label for="projectS3ProvisioningProfilePath">S3 Provisioning Profile Path</label>
+								<input type="text" class="form-control" id="projectS3ProvisioningProfilePath" name="s3_provisioning_profile_path" placeholder="Enter S3 provisioning profile path">
+							</div>
+							<div class="form-group">
+								<label for="projectAlphaProvisioningProfile">Alpha Provisioning Profile</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="projectAlphaProvisioningProfile" name="alpha_provisioning_profile" placeholder="Enter alpha provisioning profile">
+									<div class="input-group-addon">.mobileprovision</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="projectAlphaProductName">Alpha Product Name</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="projectAlphaProductName" name="alpha_product_name" placeholder="Enter alpha build product name">
+									<div class="input-group-addon">.app</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="projectBetaProvisioningProfile">Beta Provisioning Profile</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="projectBetaProvisioningProfile" name="beta_provisioning_profile" placeholder="Enter beta provisioning profile">
+									<div class="input-group-addon">.mobileprovision</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="projectBetaProductName">Beta Product Name</label>
+								<div class="input-group">
+									<input type="text" class="form-control" id="projectBetaProductName" name="beta_product_name" placeholder="Enter beta build product name">
+									<div class="input-group-addon">.app</div>
+								</div>
+							</div>
+						</div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" id="projectTesting" name="testing" value="true">Requires testing
+							</label>
+						</div>
+						<div id="testingFields">
+							<div class="form-group">
+								<label for="projectCalabashFeatureUrl">Calabash Feature Github Url</label>
+								<input type="text" class="form-control" id="projectCalabashFeatureUrl" name="calabash_feature_url" placeholder="Enter calabash feature github url">
+							</div>
+							<div class="form-group">
+								<label for="projectTestBuildSource">Test Build Source</label>
+								<select class="form-control" id="projectTestBuildSource" name="test_build_source">
+									<option value="artifact">Use Build Artifact</option>
+									<option value="repo">Use Existing Repo</option>
+								</select>
+							</div>
+ 							<div id="existingRepoFields" style="display:none">
+								<div class="form-group">
+									<label for="projectTestRepoPath">Repo Path</label>
+									<input type="text" class="form-control" id="projectTestRepoPath" name="test_repo_path" placeholder="Enter absolute path to project repo">
+								</div>
+								<div class="form-group">
+									<label for="projectTestIOSWorkspace">Xcode Workspace</label>
+									<div class="input-group">
+										<input type="text" class="form-control" id="projectTestIOSWorkspace" name="test_ios_workspace" placeholder="Enter xcode workspace name">
+										<div class="input-group-addon">.xcworkspace</div>										
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="projectTestIOSScheme">Xcode Scheme</label>
+									<input type="text" class="form-control" id="projectTestIOSScheme" name="test_ios_scheme" placeholder="Enter xcode scheme name">
+								</div>
+								<div class="form-group">
+									<label for="projectTestIOSConfiguration">Xcode Configuration</label>
+									<input type="text" class="form-control" id="projectTestIOSConfiguration" name="test_ios_configuration" placeholder="Enter xcode configuration name">
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger delete-res">Delete</button>
+					<button type="submit" class="btn btn-primary create-res">Create</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
